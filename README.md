@@ -13,7 +13,7 @@ npm install
 then
 
 ```
-gulp build-serve`
+gulp build-serve
 ```
 
 and
