@@ -31,7 +31,62 @@
 
   <body>
     <main>
-      <div id="map"></div>
+      <div id="controls" class="controls">
+        <div>
+          <p>City Chooser</p>
+          <button onclick="city('lon')">London</button>
+          <button onclick="city('man')">Manchester</button>
+        </div>
+        <div>
+          <p>Theme Chooser</p>
+          <button onclick="changeType()">
+            Lights on/off
+          </button>
+        </div>
+        <div class="masts">
+          <p>Masts</p>
+          <button onclick="toggleMasts()">
+            Hide/Show Masts
+          </button>
+          <button onclick="toggleClusters()">
+            Hide/Show Cluster
+          </button>
+          <label for="clusters">Grid size</label>
+          <input type="range" name="clusters" min="0" max="250" />
+        </div>
+        <div>
+          <p>
+            Rents
+          </p>
+          <button onclick="toggleHeatmap()">
+            Hide/Show Rent Heatmap
+          </button>
+          <label for="Radius">Heatmap radius</label>
+          <input type="range" name="Radius" min="0" max="70" />
+        </div>
+        <div class="codes">
+          <a href="https://github.com/mandarini/ng-gmap">gimme teh codez</a>
+        </div>
+      </div>
+      <div id="drawingControls" class="drawing">
+        <img src="assets/img/point.png" (click)="draw('marker')" />
+        <img src="assets/img/polygon.png" (click)="draw('polygon')" />
+        <img src="assets/img/square.png" (click)="draw('square')" />
+        <img src="assets/img/line.png" (click)="draw('polyline')" />
+        <img src="assets/img/circle.png" (click)="draw('circle')" />
+        <img src="assets/img/cat.png" (click)="draw('cat')" />
+        <img src="assets/img/pan.png" (click)="draw('pan')" />
+        <img src="assets/img/save.png" (click)="draw('save')" />
+        <img src="assets/img/clear.svg" (click)="clearAll()" />
+      </div>
+      <div id="map" class="map"></div>
+      <p id="legend">
+        Prevalence factor of Loneliness of those over the age of 65:
+        {{ prevalence }}
+      </p>
+      <div class="my-link" id="link">
+        <a href="https://psyber.city">psybercity 🐈</a>
+      </div>
     </main>
     <script src="scripts/bundle.js"></script>
   </body>
