@@ -1,16 +1,19 @@
 const gulp = require("gulp");
 const browserSync = require("browser-sync");
 const uglify = require("gulp-uglify");
-const rename = require("gulp-rename");
-const cleanCSS = require("gulp-clean-css");
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
-var watchify = require("watchify");
-var tsify = require("tsify");
-var fancy_log = require("fancy-log");
-var sourcemaps = require("gulp-sourcemaps");
-var buffer = require("vinyl-buffer");
+const watchify = require("watchify");
+const tsify = require("tsify");
+const fancy_log = require("fancy-log");
+const sourcemaps = require("gulp-sourcemaps");
+const buffer = require("vinyl-buffer");
 const babel = require("gulp-babel");
+const sass = require("gulp-sass");
+var cleanCSS = require("gulp-clean-css");
+var concat = require("gulp-concat");
+
+sass.compiler = require("node-sass");
 
 function copy() {
   return gulp
@@ -57,26 +60,25 @@ function bundle() {
     .pipe(gulp.dest("docs/scripts"));
 }
 
-function processCss() {
+function sassCompile() {
   return gulp
-    .src("app/styles/*.css")
-    .pipe(cleanCSS({ compatibility: "ie8" }))
-    .pipe(
-      rename({
-        suffix: ".min"
-      })
-    )
+    .src("app/styles/*.scss")
+    .pipe(sass({ outputStyle: "compressed" }))
+    .pipe(sass().on("error", sass.logError))
+    .pipe(cleanCSS())
+    .pipe(concat("main.css"))
+    .pipe(concat("main.min.css"))
     .pipe(gulp.dest("docs/styles"));
 }
 
-gulp.task("processCss", processCss);
+gulp.task("sassCompile", sassCompile);
 
 gulp.task(
   "build-serve",
-  gulp.series(gulp.parallel("copy", "processCss"), bundle, serve)
+  gulp.series(gulp.parallel("copy", "sassCompile"), bundle, serve)
 );
 
-gulp.task("build", gulp.series(gulp.parallel("copy", "processCss"), bundle));
+gulp.task("build", gulp.series(gulp.parallel("copy", "sassCompile"), bundle));
 
 watchedBrowserify.on("update", bundle);
 watchedBrowserify.on("log", fancy_log);
@@ -84,13 +86,13 @@ watchedBrowserify.on("log", fancy_log);
 function watch() {
   gulp.watch("app/index.html", copy);
   gulp.watch("app/scripts/*.ts", bundle);
-  gulp.watch("app/styles/*.css", processCss);
+  gulp.watch("app/styles/*.scss", sassCompile);
 }
 
 gulp.task("watch", watch);
 
 // gulp.task(
 //   "buildAndServe",
-//   gulp.series(processJs, processTs, processCss, copy, serve)
+//   gulp.series(processJs, processTs, sassCompile, copy, serve)
 // );
-// gulp.task("build", gulp.series(processJs, processCss, copy));
+// gulp.task("build", gulp.series(processJs, sassCompile, copy));
