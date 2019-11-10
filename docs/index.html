@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <link rel="canonical" href="https://mandarini.github.io/explorer" />
+  <title>Katerina's Exploration</title>
+  <link rel="stylesheet" type="text/css" href="styles/main.min.css" />
+
+  <meta name="theme-color" content="#ff00ff">
+  <meta name="description" content="This is Katerina's Exploration site!">
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Katerina" />
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png" />
+  <meta name="msapplication-TileColor" content="#2F3BA2" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Colorado Springs",
+        "addressRegion": "CO",
+        "postalCode": "80840",
+        "streetAddress": "100 Main Street"
+      },
+      "email": "mailto:sk.katherine@gmail.com",
+      "image": "https://pbs.twimg.com/profile_images/378800000866963856/wICr2rBP_400x400.jpeg",
+      "jobTitle": "Software Engineer",
+      "name": "Katerina Skroumpelou",
+      "alumniOf": "UCL",
+      "birthPlace": "Athens, Greece",
+      "gender": "female",
+      "url": "https://mandarini.github.io",
+	    "sameAs" : ["https://www.linkedin.com/in/katerinaskroumpelou/",
+      "http://twitter.com/psybercity"],
+      "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Software Developer, Applications",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+          },
+          "description": "Front End Software Engineer, Google Developer Expert on Angular",
+          "estimatedSalary": [
+              {
+                "@type": "MonetaryAmountDistribution",
+                "name": "base",
+                "currency": "USD",
+                "unitText": "YEAR",
+                "percentile10": "100000.5",
+                "percentile25": "115000",
+                "median": "120000.28",
+                "percentile75": "130000",
+                "percentile90": "150000"
+              }
+          ],
+          "occupationLocation": [
+            {
+              "@type": "City",
+              "name": "Athens, Greece"
+            }
+          ]
+        }
+    }
+    </script>
+</head>
+
+<body>
+  <header>
+    <h1>Katerina's Page</h1>
+    <p id="requireHTTPS" class="hidden">
+      Please <a>reload this page via HTTPS</a>.
+    </p>
+    <div id="installContainer">
+      Hey! Don't miss out!
+      <button id="butInstall" type="button" aria-label="Install button">
+        Install
+      </button>
+      the PWA!
+    </div>
+  </header>
+  <main>
+    <div class="bio">
+      <div class="img-cont">
+        <div class="images">
+          <img class="profile" src="assets/katerina.webp" alt="Katerina's Profile Picture" />
+          <img class="angular" src="assets/angularathens.webp" alt="Angular Athens Logo" />
+        </div>
+      </div>
+      <p>
+        Katerina is a Google Developer Expert for Angular and a software engineer,
+        focused on the web front end.
+        She speaks at international conferences and co-organizes the <a href="https://twitter.com/AthensAngular">Angular
+          Athens meetup</a>.
+        She is indigenous to the internet, and she loves web development.
+        So much that she does not understand the distinction between work and life sometimes.
+        Or so her friends say. She lives with her Maine Coon in Athens, Greece.
+      </p>
+    </div>
+
+    <div class="social">
+      <p>
+        Here is the link to <a href="https://mandarini.github.io/">my website</a>! And below are some of my social
+        appearances!
+      </p>
+      <div class="embeds">
+        <iframe title="YouTube Video of Katerina" width="560" height="315" src="https://www.youtube.com/embed/Bf6VdqNbRVw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <a class="twitter-timeline" data-width="300" data-height="400" data-theme="light" data-link-color="#981CEB"
+          href="https://twitter.com/psybercity?ref_src=twsrc%5Etfw">Tweets
+          by beautiful me</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+    <div class="bottom-img">
+      <div class="girly">
+        <img src="assets/girly1.webp" alt="Girly 1" />
+        <img src="assets/girly2.webp" alt="Girly 2" onclick="clicked()" tabindex="0" role="button" />
+      </div>
+    </div>
+  </main>
+
+  <script src="scripts/main.min.js" async></script>
+</body>
+
+</html>
