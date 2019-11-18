@@ -1,15 +1,16 @@
 import {} from "google-maps";
 
-let this_drawingManager: google.maps.drawing.DrawingManager;
+let drawingManager: google.maps.drawing.DrawingManager;
 let drawingLayer: google.maps.Data;
 let allOverlays: any[] = [];
 
-export function listenForDrawing(
-  map: google.maps.Map,
-  drawingManager: google.maps.drawing.DrawingManager
-) {
+export function listenForDrawing(map: google.maps.Map) {
+  drawingManager = new google.maps.drawing.DrawingManager({
+    drawingMode: null,
+    drawingControl: false // i have my custom tools so i don't need the defaults to be displayed
+  });
+  drawingManager.setMap(map);
   drawingLayer = new google.maps.Data();
-  this_drawingManager = drawingManager;
   drawingManager.addListener("overlaycomplete", event => {
     allOverlays.push(event.overlay);
     event.overlay.addListener("rightclick", () => {
@@ -117,15 +118,13 @@ export function draw(type: string) {
   console.log("hey");
   switch (type) {
     case "marker":
-      this_drawingManager.setDrawingMode(
-        google.maps.drawing.OverlayType.MARKER
-      );
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.MARKER);
       let point: google.maps.Icon = {
         url: "assets/img/point.png",
         scaledSize: new google.maps.Size(30, 30)
       };
 
-      this_drawingManager.setOptions({
+      drawingManager.setOptions({
         markerOptions: {
           icon: point,
           clickable: true,
@@ -134,14 +133,12 @@ export function draw(type: string) {
       });
       break;
     case "cat":
-      this_drawingManager.setDrawingMode(
-        google.maps.drawing.OverlayType.MARKER
-      );
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.MARKER);
       let cat: google.maps.Icon = {
         url: "assets/img/cat.png",
         scaledSize: new google.maps.Size(70, 70)
       };
-      this_drawingManager.setOptions({
+      drawingManager.setOptions({
         markerOptions: {
           icon: cat,
           clickable: true,
@@ -150,10 +147,8 @@ export function draw(type: string) {
       });
       break;
     case "polygon":
-      this_drawingManager.setDrawingMode(
-        google.maps.drawing.OverlayType.POLYGON
-      );
-      this_drawingManager.setOptions({
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+      drawingManager.setOptions({
         polygonOptions: {
           fillColor: "#9c4d4f",
           fillOpacity: 0.5,
@@ -166,10 +161,8 @@ export function draw(type: string) {
       });
       break;
     case "square":
-      this_drawingManager.setDrawingMode(
-        google.maps.drawing.OverlayType.RECTANGLE
-      );
-      this_drawingManager.setOptions({
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.RECTANGLE);
+      drawingManager.setOptions({
         rectangleOptions: {
           fillColor: "#fff82e",
           fillOpacity: 0.5,
@@ -182,10 +175,8 @@ export function draw(type: string) {
       });
       break;
     case "polyline":
-      this_drawingManager.setDrawingMode(
-        google.maps.drawing.OverlayType.POLYLINE
-      );
-      this_drawingManager.setOptions({
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYLINE);
+      drawingManager.setOptions({
         polylineOptions: {
           strokeWeight: 2,
           strokeColor: "#00b801",
@@ -196,10 +187,8 @@ export function draw(type: string) {
       });
       break;
     case "circle":
-      this_drawingManager.setDrawingMode(
-        google.maps.drawing.OverlayType.CIRCLE
-      );
-      this_drawingManager.setOptions({
+      drawingManager.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
+      drawingManager.setOptions({
         circleOptions: {
           fillColor: "#00b801",
           fillOpacity: 0.5,
@@ -212,17 +201,17 @@ export function draw(type: string) {
       });
       break;
     case "pan":
-      this_drawingManager.setDrawingMode(null);
+      drawingManager.setDrawingMode(null);
       break;
     case "save":
-      this_drawingManager.setDrawingMode(null);
+      drawingManager.setDrawingMode(null);
       drawingLayer.toGeoJson(obj => {
         console.log(obj);
         download(JSON.stringify(obj), "drawingData.txt");
       });
       break;
     default:
-      this_drawingManager.setDrawingMode(null);
+      drawingManager.setDrawingMode(null);
   }
 }
 

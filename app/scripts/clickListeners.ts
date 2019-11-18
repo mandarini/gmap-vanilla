@@ -1,6 +1,30 @@
 import * as map from "./map";
 import * as drawingFunctions from "./drawing";
 
+export function loadAllDrawingButtons() {
+  drawing_buttons.forEach((btn: { name: string; img: string }) => {
+    createImgButton(btn, drawing, btn.name === "clear" ? "clear" : "draw");
+  });
+}
+
+export function listenersForControlButtons() {
+  document
+    .getElementById("city-lon")
+    .addEventListener("click", (event: MouseEvent) => {
+      map.city("lon");
+    });
+  document
+    .getElementById("city-man")
+    .addEventListener("click", (event: MouseEvent) => {
+      map.city("man");
+    });
+  document
+    .getElementById("lights")
+    .addEventListener("click", (event: MouseEvent) => {
+      map.changeType();
+    });
+}
+
 const drawing = document.getElementById("drawingControls");
 const drawing_buttons = [
   {
@@ -41,12 +65,6 @@ const drawing_buttons = [
   }
 ];
 
-export function loadAllDrawingButtons() {
-  drawing_buttons.forEach((btn: { name: string; img: string }) => {
-    createImgButton(btn, drawing, btn.name === "clear" ? "clear" : "draw");
-  });
-}
-
 function createImgButton(
   btn: { name: string; img: string },
   parent: HTMLElement,
@@ -68,17 +86,4 @@ function createImgButton(
     });
   }
   parent.appendChild(img_btn);
-}
-
-export function listenersForControlButtons() {
-  document
-    .getElementById("city-lon")
-    .addEventListener("click", (event: MouseEvent) => {
-      map.city("lon");
-    });
-  document
-    .getElementById("city-man")
-    .addEventListener("click", (event: MouseEvent) => {
-      map.city("man");
-    });
 }
