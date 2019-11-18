@@ -34,31 +34,37 @@
       <div id="controls" class="controls">
         <div>
           <p>City Chooser</p>
-          <button onclick="city('lon')">London</button>
-          <button onclick="city('man')">Manchester</button>
+          <button id="city-lon">London</button>
+          <button id="city-man">Manchester</button>
         </div>
         <div>
           <p>Theme Chooser</p>
-          <button onclick="changeType()">
+          <button id="lights" onclick="changeType()">
             Lights on/off
           </button>
         </div>
         <div class="masts">
           <p>Masts</p>
-          <button onclick="toggleMasts()">
+          <button id="masts-toggle" onclick="toggleMasts()">
             Hide/Show Masts
           </button>
-          <button onclick="toggleClusters()">
+          <button id="cluster-toggle" onclick="toggleClusters()">
             Hide/Show Cluster
           </button>
           <label for="clusters">Grid size</label>
-          <input type="range" name="clusters" min="0" max="250" />
+          <input
+            id="cluster-input"
+            type="range"
+            name="clusters"
+            min="0"
+            max="250"
+          />
         </div>
         <div>
           <p>
             Rents
           </p>
-          <button onclick="toggleHeatmap()">
+          <button onclick="toggleHeatmap()" id="toggle-heatmap">
             Hide/Show Rent Heatmap
           </button>
           <label for="Radius">Heatmap radius</label>
@@ -68,45 +74,7 @@
           <a href="https://github.com/mandarini/ng-gmap">gimme teh codez</a>
         </div>
       </div>
-      <div id="drawingControls" class="drawing">
-        <!-- <img
-          id="marker-control"
-          src="assets/img/point.png"
-          onclick="draw('marker')"
-        />
-        <img
-          id="polygon-control"
-          src="assets/img/polygon.png"
-          onclick="draw('polygon')"
-        />
-        <img
-          id="square-control"
-          src="assets/img/square.png"
-          onclick="draw('square')"
-        />
-        <img
-          id="polyline-control"
-          src="assets/img/line.png"
-          onclick="draw('polyline')"
-        />
-        <img
-          id="circle-control"
-          src="assets/img/circle.png"
-          onclick="draw('circle')"
-        />
-        <img id="cat-control" src="assets/img/cat.png" onclick="draw('cat')" />
-        <img id="pan-control" src="assets/img/pan.png" onclick="draw('pan')" />
-        <img
-          id="save-control"
-          src="assets/img/save.png"
-          onclick="draw('save')"
-        />
-        <img
-          id="clear-control"
-          src="assets/img/clear.svg"
-          onclick="clearAll()"
-        /> -->
-      </div>
+      <div id="drawingControls" class="drawing"></div>
       <div id="map" class="map"></div>
       <p id="legend">
         Prevalence factor of Loneliness of those over the age of 65: {{

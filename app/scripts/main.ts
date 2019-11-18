@@ -2,18 +2,16 @@
 
 import { loadMapScript } from "./mapscript";
 // import { RegisterSW } from "./sw-reg";
-import { loadAllDrawingButtons } from "./clickListeners";
+import * as clickListeners from "./clickListeners";
 import { FunWithMaps } from "./map";
 import {} from "google-maps";
 
 // RegisterSW();
-loadAllDrawingButtons();
+clickListeners.loadAllDrawingButtons();
+clickListeners.listenersForControlButtons();
 
 let map: google.maps.Map;
-let drawingManager: google.maps.drawing.DrawingManager;
-let allOverlays: any[] = [];
 
-let drawingLayer: google.maps.Data;
 if (window["google"] && window["google"]["maps"]) {
   initMap();
 } else {
