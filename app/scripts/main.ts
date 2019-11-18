@@ -1,11 +1,11 @@
 /// <reference types="@types/markerclustererplus" />
 
 import { loadMapScript } from "./mapscript";
-import { RegisterSW } from "./sw-reg";
+// import { RegisterSW } from "./sw-reg";
 import { FunWithMaps } from "./map";
 import {} from "google-maps";
 
-RegisterSW();
+// RegisterSW();
 
 let map: google.maps.Map;
 let drawingManager: google.maps.drawing.DrawingManager;
@@ -15,14 +15,15 @@ let drawingLayer: google.maps.Data;
 if (window["google"] && window["google"]["maps"]) {
   initMap();
 } else {
-  loadMapScript("", () => {
+  loadMapScript("geometry,drawing,visualization", (event: Event) => {
+    console.log(event);
     initMap();
   });
 }
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 10,
+    zoom: 11,
     scrollwheel: true,
     panControl: false,
     mapTypeControl: false,

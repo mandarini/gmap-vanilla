@@ -55,7 +55,7 @@ export function FunWithMaps(map: google.maps.Map) {
   map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
     document.getElementById("katlink")
   );
-
+  drawingManager = new google.maps.drawing.DrawingManager();
   listenForDrawing(map, drawingManager);
 }
 
@@ -244,7 +244,7 @@ function listenForDrawing(
   map: google.maps.Map,
   drawingManager: google.maps.drawing.DrawingManager
 ) {
-  google.maps.event.addListener(drawingManager, "overlaycomplete", event => {
+  drawingManager.addListener("overlaycomplete", event => {
     allOverlays.push(event.overlay);
     event.overlay.addListener("rightclick", () => {
       event.overlay.setMap(null);
