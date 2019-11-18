@@ -16,7 +16,6 @@ if (window["google"] && window["google"]["maps"]) {
   initMap();
 } else {
   loadMapScript("geometry,drawing,visualization", (event: Event) => {
-    console.log(event);
     initMap();
   });
 }

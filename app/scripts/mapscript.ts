@@ -1,5 +1,4 @@
 export function loadMapScript(libraries: string, c: Function): void {
-  console.log("hey there");
   if (!document.getElementById("gmap")) {
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -12,7 +11,6 @@ export function loadMapScript(libraries: string, c: Function): void {
     script.addEventListener(
       "load",
       e => {
-        console.log("loaded");
         c(e);
       },
       false

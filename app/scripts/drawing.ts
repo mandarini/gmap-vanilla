@@ -115,7 +115,6 @@ export function listenForDrawing(map: google.maps.Map) {
 }
 
 export function draw(type: string) {
-  console.log("hey");
   switch (type) {
     case "marker":
       drawingManager.setDrawingMode(google.maps.drawing.OverlayType.MARKER);
