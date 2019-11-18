@@ -69,20 +69,48 @@
         </div>
       </div>
       <div id="drawingControls" class="drawing">
-        <img src="assets/img/point.png" (click)="draw('marker')" />
-        <img src="assets/img/polygon.png" (click)="draw('polygon')" />
-        <img src="assets/img/square.png" (click)="draw('square')" />
-        <img src="assets/img/line.png" (click)="draw('polyline')" />
-        <img src="assets/img/circle.png" (click)="draw('circle')" />
-        <img src="assets/img/cat.png" (click)="draw('cat')" />
-        <img src="assets/img/pan.png" (click)="draw('pan')" />
-        <img src="assets/img/save.png" (click)="draw('save')" />
-        <img src="assets/img/clear.svg" (click)="clearAll()" />
+        <!-- <img
+          id="marker-control"
+          src="assets/img/point.png"
+          onclick="draw('marker')"
+        />
+        <img
+          id="polygon-control"
+          src="assets/img/polygon.png"
+          onclick="draw('polygon')"
+        />
+        <img
+          id="square-control"
+          src="assets/img/square.png"
+          onclick="draw('square')"
+        />
+        <img
+          id="polyline-control"
+          src="assets/img/line.png"
+          onclick="draw('polyline')"
+        />
+        <img
+          id="circle-control"
+          src="assets/img/circle.png"
+          onclick="draw('circle')"
+        />
+        <img id="cat-control" src="assets/img/cat.png" onclick="draw('cat')" />
+        <img id="pan-control" src="assets/img/pan.png" onclick="draw('pan')" />
+        <img
+          id="save-control"
+          src="assets/img/save.png"
+          onclick="draw('save')"
+        />
+        <img
+          id="clear-control"
+          src="assets/img/clear.svg"
+          onclick="clearAll()"
+        /> -->
       </div>
       <div id="map" class="map"></div>
       <p id="legend">
-        Prevalence factor of Loneliness of those over the age of 65:
-        {{ prevalence }}
+        Prevalence factor of Loneliness of those over the age of 65: {{
+        prevalence }}
       </p>
       <div class="my-link" id="link">
         <a href="https://psyber.city">psybercity 🐈</a>
