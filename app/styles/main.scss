@@ -190,12 +190,17 @@ p.legend {
 
 @media (max-width: 600px) {
   .controls {
-    padding-top: 80px;
+    padding-top: 160px;
   }
   .search-places {
     padding-top: 8px;
     top: 8px;
+
+    .directions {
+      margin-top: 4px;
+    }
   }
+
   .drawing {
     flex-direction: column;
   }
