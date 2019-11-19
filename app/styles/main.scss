@@ -134,7 +134,16 @@ h1 {
   .directions {
     margin-top: 16px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    .inputs {
+      display: flex;
+      flex-direction: row;
+    }
+    .distance {
+      background-color: white;
+      padding: 2px;
+      color: black;
+    }
   }
 }
 

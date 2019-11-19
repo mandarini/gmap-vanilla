@@ -3,6 +3,8 @@ export function directionCalculator(map: google.maps.Map) {
   const directionsRenderer = new google.maps.DirectionsRenderer();
   directionsRenderer.setMap(map);
 
+  const service: google.maps.DistanceMatrixService = new google.maps.DistanceMatrixService();
+
   const autocomplete_input_origin: HTMLInputElement = document.getElementById(
     "origin"
   ) as HTMLInputElement;
@@ -13,6 +15,7 @@ export function directionCalculator(map: google.maps.Map) {
     calculateAndDisplayRoute(
       directionsService,
       directionsRenderer,
+      service,
       autocomplete_input_origin,
       autocomplete_input_destination
     );
@@ -58,8 +61,9 @@ export function directionCalculator(map: google.maps.Map) {
 }
 
 function calculateAndDisplayRoute(
-  directionsService: any,
+  directionsService: google.maps.DirectionsService,
   directionsRenderer: google.maps.DirectionsRenderer,
+  service: google.maps.DistanceMatrixService,
   origin: HTMLInputElement,
   destination: HTMLInputElement
 ) {
@@ -73,12 +77,31 @@ function calculateAndDisplayRoute(
       {
         origin: { query: origin.value },
         destination: { query: destination.value },
-        travelMode: "DRIVING"
+        travelMode: google.maps.TravelMode.DRIVING
       },
       (response: any, status: any) => {
-        console.log(response, status);
         if (status === "OK") {
           directionsRenderer.setDirections(response);
+          service.getDistanceMatrix(
+            {
+              origins: [origin.value],
+              destinations: [destination.value],
+              travelMode: google.maps.TravelMode.DRIVING,
+              unitSystem: google.maps.UnitSystem.METRIC
+            },
+            (response, status) => {
+              if (status !== "OK") {
+                alert("Error was: " + status);
+              } else {
+                (document.getElementById(
+                  "distance"
+                ) as HTMLSpanElement).textContent =
+                  response.rows[0].elements[0].distance.text +
+                  " " +
+                  response.rows[0].elements[0].duration.text;
+              }
+            }
+          );
         } else {
           window.alert("Directions request failed due to " + status);
         }
