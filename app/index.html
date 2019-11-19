@@ -84,12 +84,25 @@
         </div>
       </div>
       <div id="place-search" class="search-places">
-        <input id="place-input" type="text" placeholder="Enter a location" />
-        <div class="strict-select">
-          <input type="checkbox" id="use-strict-bounds" value="" />
-          <label for="use-strict-bounds">Strict Bounds</label>
+        <div class="search">
+          <input id="place-input" type="text" placeholder="Enter a location" />
+          <div class="strict-select">
+            <input type="checkbox" id="use-strict-bounds" value="" />
+            <label for="use-strict-bounds">Strict Bounds</label>
+          </div>
+        </div>
+        <div class="directions">
+          <div class="inputs">
+            <input id="origin" type="text" placeholder="Enter origin" />
+            <input
+              id="destination"
+              type="text"
+              placeholder="Enter destination"
+            />
+          </div>
         </div>
       </div>
+
       <div id="drawingControls" class="drawing"></div>
       <div id="map" class="map"></div>
       <div id="infowindow-content">

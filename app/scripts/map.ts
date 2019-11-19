@@ -3,6 +3,7 @@ import {} from "google-maps";
 import * as styledMap from "./styledMap";
 import { listenForDrawing } from "./drawing";
 import { placesSearch } from "./placesSearch";
+import { directionCalculator } from "./directions";
 
 import { customGradient } from "./gradient";
 import { mapNumber } from "./mapNumber";
@@ -55,6 +56,7 @@ export function FunWithMaps(map: google.maps.Map) {
     document.getElementById("place-search")
   );
 
+  directionCalculator(map);
   placesSearch(map);
   listenForDrawing(map);
   loadAllMarkers(map);

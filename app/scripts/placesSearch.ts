@@ -31,6 +31,7 @@ export function placesSearch(map: google.maps.Map) {
     const infowindow = new google.maps.InfoWindow();
     const infowindowContent = document.getElementById("infowindow-content");
     infowindow.setContent(infowindowContent);
+    console.log(place);
 
     let address = "";
     if (place.address_components) {
