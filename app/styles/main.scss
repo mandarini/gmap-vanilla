@@ -112,6 +112,15 @@ h1 {
   }
 }
 
+.search-places {
+  padding-top: 8px;
+  top: 8px;
+  input {
+    padding: 8px;
+    line-height: 14px;
+  }
+}
+
 .drawing {
   display: flex;
   flex-direction: row;
@@ -142,6 +151,13 @@ p.legend {
 }
 
 @media (max-width: 600px) {
+  .controls {
+    padding-top: 80px;
+  }
+  .search-places {
+    padding-top: 8px;
+    top: 8px;
+  }
   .drawing {
     flex-direction: column;
   }

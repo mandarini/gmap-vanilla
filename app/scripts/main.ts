@@ -15,7 +15,7 @@ let map: google.maps.Map;
 if (window["google"] && window["google"]["maps"]) {
   initMap();
 } else {
-  loadMapScript("geometry,drawing,visualization", (event: Event) => {
+  loadMapScript("geometry,drawing,visualization,places", (event: Event) => {
     initMap();
   });
 }
