@@ -85,9 +85,18 @@
       </div>
       <div id="place-search" class="search-places">
         <input id="place-input" type="text" placeholder="Enter a location" />
+        <div class="strict-select">
+          <input type="checkbox" id="use-strict-bounds" value="" />
+          <label for="use-strict-bounds">Strict Bounds</label>
+        </div>
       </div>
       <div id="drawingControls" class="drawing"></div>
       <div id="map" class="map"></div>
+      <div id="infowindow-content">
+        <img src="" width="16" height="16" id="place-icon" />
+        <span id="place-name" class="title"></span><br />
+        <span id="place-address"></span>
+      </div>
       <div class="my-link" id="katlink">
         <a href="https://psyber.city" target="_blank">psybercity 🐈</a>
       </div>
