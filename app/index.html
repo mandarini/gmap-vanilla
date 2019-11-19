@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1"
     />
-    <link rel="canonical" href="https://mandarini.github.io/explorer" />
+    <link rel="canonical" href="/" />
     <title>Google Maps Platform exploration</title>
     <link rel="stylesheet" type="text/css" href="styles/main.min.css" />
 
@@ -68,7 +68,13 @@
             Hide/Show Rent Heatmap
           </button>
           <label for="Radius">Heatmap radius</label>
-          <input id="heatmap-range" type="range" name="Radius" min="0" max="70" />
+          <input
+            id="heatmap-range"
+            type="range"
+            name="Radius"
+            min="0"
+            max="70"
+          />
         </div>
         <div class="codes">
           <a href="https://github.com/mandarini/ng-gmap" target="_blank"
@@ -78,10 +84,6 @@
       </div>
       <div id="drawingControls" class="drawing"></div>
       <div id="map" class="map"></div>
-      <p id="legend">
-        Prevalence factor of Loneliness of those over the age of 65: {{
-        prevalence }}
-      </p>
       <div class="my-link" id="link">
         <a href="https://psyber.city" target="_blank">psybercity 🐈</a>
       </div>
