@@ -14,18 +14,17 @@ let infoWindow: google.maps.InfoWindow;
 
 let masts: string[][];
 let mastsVisible: boolean = false;
+let markerClusterer: MarkerClusterer;
+let clustersVisible: boolean = false;
 
 let heatmap: google.maps.visualization.HeatmapLayer;
-
 let lettings: string[][];
 
 let showLonely: boolean = false;
 let otherGeoJson: any;
-let markerClusterer: MarkerClusterer;
 let clust_num: number;
 let prevalence: string;
 
-let clustersVisible: boolean = false;
 let heatmapVisible: boolean = false;
 
 let heatmap_radius: number = 20;
@@ -132,6 +131,40 @@ export function toggleMasts(): void {
   mastsVisible = !mastsVisible;
 }
 
+export function toggleClusters(): void {
+  if (!clustersVisible) {
+    markerClusterer = new MarkerClusterer(this_map, markers, {
+      imagePath: "assets/img/m"
+    });
+    markerClusterer.setGridSize(10);
+  } else {
+    markerClusterer.clearMarkers();
+  }
+  clustersVisible = !clustersVisible;
+}
+
+export function toggleHeatmap(): void {
+  if (heatmapVisible) {
+    heatmap.setMap(null);
+  } else {
+    heatmap.setMap(this_map);
+  }
+  heatmapVisible = !heatmapVisible;
+}
+export function changeHeatmapRadius(heatmap_radius: number) {
+  heatmap.set("radius", heatmap_radius);
+}
+export function changeCluster(clust_num: number): void {
+  clustersVisible = true;
+  if (markerClusterer) {
+    markerClusterer.clearMarkers();
+  }
+  markerClusterer = new MarkerClusterer(this_map, markers, {
+    imagePath: "assets/img/m"
+  });
+  markerClusterer.setGridSize(clust_num);
+}
+
 function loadHeatmapData() {
   fetch("assets/data/letting.json")
     .then(response => {
@@ -190,36 +223,3 @@ function loadGeoJson(map: google.maps.Map) {
     infoWindow.open(map);
   });
 }
-
-// toggleClusters(): void {
-//   if (!clustersVisible) {
-//     markerClusterer = new MarkerClusterer(map, markers, {
-//       imagePath: "assets/img/m"
-//     });
-//     markerClusterer.setGridSize(10);
-//   } else {
-//     markerClusterer.clearMarkers();
-//   }
-//   clustersVisible = !clustersVisible;
-// }
-// toggleHeatmap(): void {
-//   if (heatmapVisible) {
-//     heatmap.setMap(null);
-//   } else {
-//     heatmap.setMap(map);
-//   }
-//   heatmapVisible = !heatmapVisible;
-// }
-// changeCluster(): void {
-//   clustersVisible = true;
-//   if (markerClusterer) {
-//     markerClusterer.clearMarkers();
-//   }
-//   markerClusterer = new MarkerClusterer(map, markers, {
-//     imagePath: "assets/img/m"
-//   });
-//   markerClusterer.setGridSize(clust_num);
-// }
-// changed() {
-//   heatmap.set("radius", heatmap_radius);
-// }

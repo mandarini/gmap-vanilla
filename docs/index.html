@@ -45,10 +45,10 @@
         </div>
         <div class="masts">
           <p>Masts</p>
-          <button id="masts-toggle" onclick="toggleMasts()">
+          <button id="masts-toggle">
             Hide/Show Masts
           </button>
-          <button id="cluster-toggle" onclick="toggleClusters()">
+          <button id="cluster-toggle">
             Hide/Show Cluster
           </button>
           <label for="clusters">Grid size</label>
@@ -64,11 +64,11 @@
           <p>
             Rents
           </p>
-          <button onclick="toggleHeatmap()" id="toggle-heatmap">
+          <button id="heatmap-toggle">
             Hide/Show Rent Heatmap
           </button>
           <label for="Radius">Heatmap radius</label>
-          <input type="range" name="Radius" min="0" max="70" />
+          <input id="heatmap-range" type="range" name="Radius" min="0" max="70" />
         </div>
         <div class="codes">
           <a href="https://github.com/mandarini/ng-gmap" target="_blank"
@@ -87,5 +87,6 @@
       </div>
     </main>
     <script src="scripts/bundle.js"></script>
+    <script type="text/javascript" src="./markerclusterer.js"></script>
   </body>
 </html>

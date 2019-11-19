@@ -23,6 +23,7 @@ function copy() {
       "app/**/*.jpg",
       "app/**/*.png",
       "app/**/*.json",
+      "app/assets/markerclusterer.js",
       "./service-worker.js"
     ])
     .pipe(gulp.dest("docs"));

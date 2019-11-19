@@ -23,6 +23,31 @@ export function listenersForControlButtons() {
     .addEventListener("click", (event: MouseEvent) => {
       map.changeType();
     });
+  document
+    .getElementById("masts-toggle")
+    .addEventListener("click", (event: MouseEvent) => {
+      map.toggleMasts();
+    });
+  document
+    .getElementById("cluster-toggle")
+    .addEventListener("click", (event: MouseEvent) => {
+      map.toggleClusters();
+    });
+  document
+    .getElementById("heatmap-toggle")
+    .addEventListener("click", (event: MouseEvent) => {
+      map.toggleHeatmap();
+    });
+
+  document.getElementById("heatmap-range").addEventListener("change", event => {
+    const target: HTMLInputElement = event.target as HTMLInputElement;
+    map.changeHeatmapRadius(parseInt(target.value));
+  });
+
+  document.getElementById("cluster-range").addEventListener("change", event => {
+    const target: HTMLInputElement = event.target as HTMLInputElement;
+    map.changeCluster(parseInt(target.value));
+  });
 }
 
 const drawing = document.getElementById("drawingControls");
