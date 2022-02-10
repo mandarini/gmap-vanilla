@@ -34,7 +34,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "tsify": "^4.0.1",
     "typescript": "^3.7.2",
     "vinyl-buffer": "^1.0.1",
